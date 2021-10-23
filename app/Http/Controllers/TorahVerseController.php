@@ -3,9 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DataTables;
 
-class Ketuvim extends Controller
+use App\Models\TorahVerse;
+
+class TorahVerseController extends Controller
 {
+    private TorahVerse $torahVerse;
+
+
+    public function __construct(TorahVerse $torahVerse) {
+        $this->torahVerse = $torahVerse;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +23,11 @@ class Ketuvim extends Controller
      */
     public function index()
     {
-        //
+        $model = $this->torahVerse::query();
+
+        return DataTables::eloquent($model)
+            ->orderColumns([], '-:column $1')
+            ->make();
     }
 
     /**

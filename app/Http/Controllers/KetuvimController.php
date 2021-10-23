@@ -5,15 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DataTables;
 
-use App\Models\Torah;
+use App\Models\Ketuvim;
 
-class TorahController extends Controller
+class KetuvimController extends Controller
 {
-    private Torah $torah;
+    private $ketuvim;
 
-
-    public function __construct(Torah $torah) {
-        $this->torah = $torah;
+    public function __construct(Ketuvim $ketuvim) {
+        $this->ketuvim = $ketuvim;
     }
 
     /**
@@ -23,7 +22,7 @@ class TorahController extends Controller
      */
     public function index()
     {
-        $model = $this->torah::query();
+        $model = $this->ketuvim::query();
 
         return DataTables::eloquent($model)
             ->orderColumns([], '-:column $1')
@@ -38,13 +37,7 @@ class TorahController extends Controller
      */
     public function store(Request $request)
     {
-        $data = ['name_pt' =>  $request->name_pt, 'name_he' => $request->name_he];
-
-        $torah = new $this->torah;
-        $torah->fill($data);
-        $data = $torah->save();
-
-        return response()->json($data, 201);
+        //
     }
 
     /**

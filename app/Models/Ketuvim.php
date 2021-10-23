@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Ketuvim extends Model
 {
     use HasFactory;
+
+    protected $table = 'ketuvim';
 }

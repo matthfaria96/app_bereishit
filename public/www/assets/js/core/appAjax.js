@@ -30,8 +30,6 @@ function appAjax(_method, _url, _data, _callbackSuccess, _callbackError){
         return false;
     }
     var _dataProcess = {
-        '_app_url': _url,
-        '_app_method': _method,
         '_token': $('[name=_token]').val()
     };
 
@@ -39,8 +37,8 @@ function appAjax(_method, _url, _data, _callbackSuccess, _callbackError){
     // console.log(_dataProcess);
 
     return $.ajax({
-        method: 'POST',
-        url: '/ajax',
+        method: _method,
+        url: _url,
         data: _dataProcess,
         // async: false,
         // success: _callbackSuccess,

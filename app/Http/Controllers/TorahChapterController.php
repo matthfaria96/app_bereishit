@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DataTables;
 
-use App\Models\Torah;
+use App\Models\TorahChapter;
 
-class TorahController extends Controller
+class TorahChapterController extends Controller
 {
-    private Torah $torah;
+    private TorahChapter $torahChapter;
 
 
-    public function __construct(Torah $torah) {
-        $this->torah = $torah;
+    public function __construct(TorahChapter $torahChapter) {
+        $this->torahChapter = $torahChapter;
     }
 
     /**
@@ -23,7 +23,7 @@ class TorahController extends Controller
      */
     public function index()
     {
-        $model = $this->torah::query();
+        $model = $this->torahChapter::query();
 
         return DataTables::eloquent($model)
             ->orderColumns([], '-:column $1')
@@ -38,13 +38,7 @@ class TorahController extends Controller
      */
     public function store(Request $request)
     {
-        $data = ['name_pt' =>  $request->name_pt, 'name_he' => $request->name_he];
-
-        $torah = new $this->torah;
-        $torah->fill($data);
-        $data = $torah->save();
-
-        return response()->json($data, 201);
+        //
     }
 
     /**

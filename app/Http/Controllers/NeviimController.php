@@ -3,9 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DataTables;
+
+use App\Models\Neviim;
 
 class NeviimController extends Controller
 {
+    private $neviim;
+
+    public function __construct(Neviim $neviim) {
+        $this->neviim = $neviim;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +22,11 @@ class NeviimController extends Controller
      */
     public function index()
     {
-        //
+        $model = $this->neviim::query();
+
+        return DataTables::eloquent($model)
+            ->orderColumns([], '-:column $1')
+            ->make();
     }
 
     /**
