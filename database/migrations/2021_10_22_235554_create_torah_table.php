@@ -14,7 +14,9 @@ class CreateTorahTable extends Migration
     public function up()
     {
         Schema::create('torah', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('name_pt');
+            $table->string('name_he');
             $table->timestamps();
         });
     }

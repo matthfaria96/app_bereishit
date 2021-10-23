@@ -16,6 +16,25 @@ class DashboardController extends Controller
         return view('dasboard.show');
     }
 
+    public function managerDivisions() {
+        return view('managers.divisions.show');
+    }
+
+    public function managerBooks()
+    {
+        return view('managers.books.show');
+    }
+
+    public function managerChapters()
+    {
+        return view('managers.chapters.show');
+    }
+
+    public function managerVerses()
+    {
+        return view('managers.verses.show');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

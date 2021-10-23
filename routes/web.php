@@ -18,8 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group([
-    'prefix' => '/web',
-], function () {
-    Route::get('/dasboard', [DashboardController::class, 'index']);
+Route::group(['prefix' => '/web'], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+
+    Route::group(['prefix' => '/manager'], function () {
+        Route::get('/divisions', [DashboardController::class, 'managerDivisions']);
+        Route::get('/books', [DashboardController::class, 'managerBooks']);
+        Route::get('/chapters', [DashboardController::class, 'managerChapters']);
+        Route::get('/verses', [DashboardController::class, 'managerVerses']);
+    });
 });

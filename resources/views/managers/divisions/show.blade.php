@@ -4,23 +4,22 @@
 <table class="table">
     <thead>
       <tr>
-        <th scope="co0">#</th>
-        <th scope="co1">LIVRO</th>
+        <th scope="co0"></th>
+        <th scope="co1"></th>
+        <th scope="co2"></th>
+        <th scope="co3"></th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th scope="row">1</th>
-        <td  colspan="0">
-          <a href="/web/manager/chapters" class="mr-5">genesis | Hebreu</a>
-          <i class="fas fa-cog pointer"  data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
-        </td>
+        <th scope="row"></th>
+        <td  colspan="0"><a href="/web/manager/books">TORAH | Hebreu</a></td>
+        <td  colspan="1"><a href="/web/manager/books">NEVIIM | Hebreu</a></td>
+        <td  colspan="2"><a href="/web/manager/books">KETUVIM | Hebreu</a></td>
       </tr>
     </tbody>
     <tfoot>
         <tr>
-            <th scope="row"></th>
-            <td colspan="0"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Cadastrar livro</button></td>
         </tr>
     </tfoot>
   </table>
