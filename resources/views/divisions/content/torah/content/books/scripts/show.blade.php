@@ -12,7 +12,9 @@ $(document).ready(function() {
     }
 
     function save() {
-        appAjax('post', '/api/torah', getInputModalValues())        
+        appAjax('post', '/api/torah', getInputModalValues(), function () {
+            populateTable();
+        })        
     }
     
     function populateTable() {
@@ -31,6 +33,7 @@ $(document).ready(function() {
                 `
             })
 
+            $('table tbody tr').remove();
             tableBodyBooks.append(books)
 
         })

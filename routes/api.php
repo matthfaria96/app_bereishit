@@ -22,20 +22,19 @@ use App\Http\Controllers\TorahVerseController;
 
 Route::group(['prefix' => '/torah'], function () {
     Route::group(['prefix' => '/{bookId}'], function () {
-        Route::get('/chapters/${chapterId}/verses', [TorahVerseController::class, 'index']);
-        Route::get('/chapters/${chapterId}/verses/{id}', [TorahVerseController::class, 'show']);
-        Route::post('/chapters/${chapterId}/verses', [TorahVerseController::class, 'store']);
-        Route::put('/chapters/${chapterId}/verses/{id}', [TorahVerseController::class, 'update']);
-        Route::delete('/chapters/${chapterId}/verses/{id}', [TorahVerseController::class, 'destroy']);    
+        Route::get('/chapters/{chapterId}/verses', [TorahVerseController::class, 'index']);
+        Route::get('/chapters/{chapterId}/verses/{id}', [TorahVerseController::class, 'show']);
+        Route::post('/chapters/{chapterId}/verses', [TorahVerseController::class, 'store']);
+        Route::put('/chapters/{chapterId}/verses/{id}', [TorahVerseController::class, 'update']);
+        Route::delete('/chapters/{chapterId}/verses/{id}', [TorahVerseController::class, 'destroy']);    
     });
 
-
-    Route::group(['prefix' => '/chapters'], function () {
-        Route::get('/', [TorahChapterController::class, 'index']);
-        Route::get('/{id}', [TorahChapterController::class, 'show']);
-        Route::post('/', [TorahChapterController::class, 'store']);
-        Route::put('/{id}', [TorahChapterController::class, 'update']);
-        Route::delete('/{id}', [TorahChapterController::class, 'destroy']);
+    Route::group(['prefix' => '/{bookId}'], function () {
+        Route::get('/chapters', [TorahChapterController::class, 'index']);
+        Route::get('/chapters/{id}', [TorahChapterController::class, 'show']);
+        Route::post('/chapters/', [TorahChapterController::class, 'store']);
+        Route::put('/chapters/{id}', [TorahChapterController::class, 'update']);
+        Route::delete('/chapters/{id}', [TorahChapterController::class, 'destroy']);
 
     });
 

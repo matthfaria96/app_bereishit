@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DataTables;
 
-use App\Models\Ketuvim;
+use App\Models\KetuvimChapter;
 
 class KetuvimChapterChapterController extends Controller
 {

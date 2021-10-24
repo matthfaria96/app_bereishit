@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class KetuvimChapter extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['number_pt', 'number_he', 'book_id'];
 }

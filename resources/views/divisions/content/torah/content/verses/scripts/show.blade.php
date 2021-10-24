@@ -2,6 +2,9 @@
     $(document).ready(function() {
         const inputNumberPt    = $('#inputNumberPt');
         const inputNumberHe    = $('#inputNumberHe');
+        const inputVersePt    = $('#inputVersePt');
+        const inputVerseHe    = $('#inputVerseHe');
+
         const bookId           = {{ $book_id }};
         const chapterId           = {{ $chapter_id }};
         const tableBodyBooks   = $('table tbody');
@@ -10,13 +13,17 @@
             return {
                 number_pt: inputNumberPt.val(),
                 number_he: inputNumberHe.val(),
+                verse_pt: inputVersePt.val(),
+                verse_he: inputVerseHe.val(),
                 book_id: bookId,
                 chapter_id: chapterId,
             }
         }
     
         function save() {
-            appAjax('post', `/api/torah/${bookId}/chapters/${chapterId}/verses`, getInputModalValues())        
+            appAjax('post', `/api/torah/${bookId}/chapters/${chapterId}/verses`, getInputModalValues(), function () {
+                populateTable();
+            })        
         }
         
         function populateTable() {
@@ -26,21 +33,22 @@
                         <tr>
                             <th scope="row">1</th>
                             <td  colspan="0">
-                            <a href="#">número pt | número hebreu</a>
+                            <a href="#">${item.number_pt} | ${item.number_he}</a>
                             <i class="fas fa-cog pointer"  data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                             </td>
                             <td  colspan="1">
-                            <a href="#">Texto pt</a>
+                            <a href="#">${item.verse_pt}</a>
                             <i class="fas fa-cog pointer"  data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                             </td>
                             <td  colspan="2">
-                            <a href="#">Texto hebreu</a>
+                            <a href="#">${item.verse_he}</a>
                             <i class="fas fa-cog pointer"  data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                             </td>
                         </tr>
                     `
                 })
-    
+
+                $('table tbody tr').remove();
                 tableBodyBooks.append(books)
     
             })

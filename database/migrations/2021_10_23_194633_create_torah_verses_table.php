@@ -15,6 +15,8 @@ class CreateTorahVersesTable extends Migration
     {
         Schema::create('torah_verses', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('number_pt');
+            $table->string('number_he');
             $table->string('verse_pt');
             $table->string('verse_he');
             $table->unsignedInteger('chapter_id');

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DataTables;
 
-use App\Models\Neviim;
+use App\Models\NeviimChapter;
 
 class NeviimChapterController extends Controller
 {

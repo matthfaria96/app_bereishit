@@ -10,4 +10,5 @@ class Ketuvim extends Model
     use HasFactory;
 
     protected $table = 'ketuvim';
+    protected $fillable = ['name_pt', 'name_he'];
 }

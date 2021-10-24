@@ -14,11 +14,13 @@
         }
     
         function save() {
-            appAjax('post', `/api/torah/${bookId}/chapters`, getInputModalValues())        
+            appAjax('post', `/api/torah/${bookId}/chapters`, getInputModalValues(), function () {
+                populateTable();
+            })
         }
         
         function populateTable() {
-            appAjax('get', '/api/torah/chapters', {}, function (data) {
+            appAjax('get', `/api/torah/${bookId}/chapters`, {}, function (data) {
                 let books = data.data.map(function (item) {
                     return `
                         <tr>
@@ -33,8 +35,8 @@
                     `
                 })
     
+                $('table tbody tr').remove();
                 tableBodyBooks.append(books)
-    
             })
     
         }

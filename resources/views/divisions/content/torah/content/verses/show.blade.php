@@ -31,25 +31,25 @@
             </div>
             <div class="modal-body">
                 <div class="form-floating">
-                  <input type="text" class="form-control" id="floatingInput" placeholder=">Número pt">
-                  <label for="floatingInput">Número pt</label>
+                  <input type="text" class="form-control" id="inputNumberPt" placeholder=">Número pt">
+                  <label for="inputNumberPt">Número pt</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingInput" placeholder=">Número hebreu">
-                  <label for="floatingInput">Número hebreu</label>
+                  <input type="text" class="form-control" id="inputNumberHe" placeholder=">Número hebreu">
+                  <label for="inputNumberHe">Número hebreu</label>
                 </div>
                 <div class="form-floating">
-                  <input type="text" class="form-control" id="floatingPassword" placeholder=">Texto pt">
-                  <label for="floatingPassword">Texto pt</label>
+                  <input type="text" class="form-control" id="inputVersePt" placeholder=">Texto pt">
+                  <label for="inputVersePt">Texto pt</label>
                 </div>
                 <div class="form-floating">
-                  <input type="text" class="form-control" id="floatingPassword" placeholder=">Texto hebreu">
-                  <label for="floatingPassword">Texto hebreu</label>
+                  <input type="text" class="form-control" id="inputVerseHe" placeholder=">Texto hebreu">
+                  <label for="inputVerseHe">Texto hebreu</label>
                 </div>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-primary">Salvar</button>
+            <button type="button" class="btn btn-primary btn-save">Salvar</button>
             </div>
         </form>
         </div>

@@ -36,13 +36,20 @@ class TorahVerseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $bookId, $chapterId)
     {
+        $data = [
+            'number_pt'  => $request['number_pt'],
+            'number_he'  => $request['number_he'],
+            'verse_pt'   => $request['verse_pt'],
+            'verse_he'   => $request['verse_he'],
+            'chapter_id' => $request['chapter_id']
+        ];
         $verse = new $this->torahVerse;
-        $verse->fill($request);
+        $verse->fill($data);
         $verse->save();
 
-        return response()->json($verse, 200);
+        return response()->json($verse, 201);
     }
 
     /**
