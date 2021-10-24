@@ -21,11 +21,14 @@ class TorahVerseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($chapterId)
     {
         $model = $this->torahVerse::query();
 
         return DataTables::eloquent($model)
+            ->filter(function ($query) use($chapterId) {
+                $query->where('chapter_id', '=', $chapterId);
+            })
             ->orderColumns([], '-:column $1')
             ->make();
     }

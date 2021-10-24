@@ -10,4 +10,13 @@ class TorahVerse extends Model
     use HasFactory;
 
     protected $fillable = ['number_pt', 'number_he', 'verse_pt', 'verse_he', 'chapter_id'];
+
+
+    /**
+     * Get the chapter that owns the verse.
+     */
+    public function chapter()
+    {
+        return $this->belongsTo(TorahChapter::class);
+    }
 }

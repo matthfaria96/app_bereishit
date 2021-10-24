@@ -8,6 +8,7 @@
         <th scope="co1">Número</th>
         <th scope="co2">Texto português</th>
         <th scope="co3">Texto hebreu</th>
+        <th scope="co4">Ações</th>
       </tr>
     </thead>
     <tbody>

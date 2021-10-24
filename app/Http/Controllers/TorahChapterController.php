@@ -21,11 +21,15 @@ class TorahChapterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($bookId)
     {
         $model = $this->torahChapter::query();
 
         return DataTables::eloquent($model)
+            ->filter(function ($query) use($bookId) {
+                $query->where('book_id', '=', $bookId);
+            })
+
             ->orderColumns([], '-:column $1')
             ->make();
     }

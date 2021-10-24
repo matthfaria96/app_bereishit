@@ -11,4 +11,9 @@ class Torah extends Model
 
     protected $fillable = ['name_pt', 'name_he'];
     protected $table = 'torah';
+
+    public function chapters()
+    {
+        return $this->hasMany(TorahChapter::class);
+    }
 }

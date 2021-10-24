@@ -2,11 +2,10 @@
     $(document).ready(function() {
         const inputNumberPt    = $('#inputNumberPt');
         const inputNumberHe    = $('#inputNumberHe');
-        const inputVersePt    = $('#inputVersePt');
-        const inputVerseHe    = $('#inputVerseHe');
-
-        const bookId           = {{ $book_id }};
-        const chapterId           = {{ $chapter_id }};
+        const inputVersePt     = $('#inputVersePt');
+        const inputVerseHe     = $('#inputVerseHe');
+        const bookId           = "{{ $book_id }}";
+        const chapterId        = "{{ $chapter_id }}";
         const tableBodyBooks   = $('table tbody');
     
         function getInputModalValues() {
@@ -33,16 +32,16 @@
                         <tr>
                             <th scope="row">1</th>
                             <td  colspan="0">
-                            <a href="#">${item.number_pt} | ${item.number_he}</a>
-                            <i class="fas fa-cog pointer"  data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                                <a href="#">${item.number_pt} | ${item.number_he}</a>
                             </td>
                             <td  colspan="1">
-                            <a href="#">${item.verse_pt}</a>
-                            <i class="fas fa-cog pointer"  data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                                <a href="#">${item.verse_pt}</a>
                             </td>
                             <td  colspan="2">
-                            <a href="#">${item.verse_he}</a>
-                            <i class="fas fa-cog pointer"  data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                                <a href="#">${item.verse_he}</a>
+                            </td>
+                            <td  colspan="3">
+                                <i class="fas fa-cog pointer"  data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                             </td>
                         </tr>
                     `
