@@ -7,7 +7,7 @@ use DataTables;
 
 use App\Models\KetuvimChapter;
 
-class KetuvimChapterChapterController extends Controller
+class KetuvimChapterController extends Controller
 {
     private $ketuvimChapter;
 
@@ -20,11 +20,14 @@ class KetuvimChapterChapterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($bookId)
     {
         $model = $this->ketuvimChapter::query();
 
         return DataTables::eloquent($model)
+            ->filter(function ($query) use($bookId) {
+                $query->where('book_id', '=', $bookId);
+            })
             ->orderColumns([], '-:column $1')
             ->make();
     }
@@ -37,11 +40,13 @@ class KetuvimChapterChapterController extends Controller
      */
     public function store(Request $request)
     {
+        $data = ['number_pt' => $request['number_pt'], 'number_he' => $request['number_he'], 'book_id' => $request['book_id']];
+
         $chapter = new $this->ketuvimChapter;
-        $chapter->fill($request);
+        $chapter->fill($data);
         $chapter->save();
 
-        return response()->json($chapter, 200);
+        return response()->json($chapter, 201);
     }
 
     /**
@@ -76,5 +81,11 @@ class KetuvimChapterChapterController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function managerChapters($id)
+    {
+
+        return view('divisions.content.ketuvim.content.chapters.show', ['book_id' => $id]);
     }
 }

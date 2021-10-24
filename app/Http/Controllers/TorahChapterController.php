@@ -29,7 +29,6 @@ class TorahChapterController extends Controller
             ->filter(function ($query) use($bookId) {
                 $query->where('book_id', '=', $bookId);
             })
-
             ->orderColumns([], '-:column $1')
             ->make();
     }
@@ -48,7 +47,7 @@ class TorahChapterController extends Controller
         $chapter->fill($data);
         $chapter->save();
 
-        return response()->json($chapter, 200);
+        return response()->json($chapter, 201);
     }
 
     /**

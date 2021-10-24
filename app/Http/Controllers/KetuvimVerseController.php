@@ -20,11 +20,14 @@ class KetuvimVerseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($chapterId)
     {
         $model = $this->ketuvimVerse::query();
 
         return DataTables::eloquent($model)
+            ->filter(function ($query) use($chapterId) {
+                $query->where('chapter_id', '=', $chapterId);
+            })
             ->orderColumns([], '-:column $1')
             ->make();
     }
@@ -37,11 +40,18 @@ class KetuvimVerseController extends Controller
      */
     public function store(Request $request)
     {
+        $data = [
+            'number_pt'  => $request['number_pt'],
+            'number_he'  => $request['number_he'],
+            'verse_pt'   => $request['verse_pt'],
+            'verse_he'   => $request['verse_he'],
+            'chapter_id' => $request['chapter_id']
+        ];
         $verse = new $this->ketuvimVerse;
-        $verse->fill($request);
+        $verse->fill($data);
         $verse->save();
 
-        return response()->json($verse, 200);
+        return response()->json($verse, 201);
     }
 
     /**
@@ -76,5 +86,10 @@ class KetuvimVerseController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function managerVerses ($id, $chapterId)
+    {
+        return view('divisions.content.ketuvim.content.verses.show', ['book_id' => $id, 'chapter_id' => $chapterId]);
     }
 }

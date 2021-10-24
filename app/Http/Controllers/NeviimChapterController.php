@@ -20,11 +20,14 @@ class NeviimChapterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($bookId)
     {
         $model = $this->neviimChapter::query();
 
         return DataTables::eloquent($model)
+            ->filter(function ($query) use($bookId) {
+                $query->where('book_id', '=', $bookId);
+            })
             ->orderColumns([], '-:column $1')
             ->make();
     }
@@ -37,11 +40,13 @@ class NeviimChapterController extends Controller
      */
     public function store(Request $request)
     {
+        $data = ['number_pt' => $request['number_pt'], 'number_he' => $request['number_he'], 'book_id' => $request['book_id']];
+
         $chapter = new $this->neviimChapter;
-        $chapter->fill($request);
+        $chapter->fill($data);
         $chapter->save();
 
-        return response()->json($chapter, 200);
+        return response()->json($chapter, 201);
     }
 
     /**
@@ -76,5 +81,11 @@ class NeviimChapterController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function managerChapters($id)
+    {
+
+        return view('divisions.content.neviim.content.chapters.show', ['book_id' => $id]);
     }
 }

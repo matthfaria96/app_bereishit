@@ -9,6 +9,7 @@ use App\Http\Controllers\TorahChapterController;
 use App\Http\Controllers\TorahVerseController;
 use App\Http\Controllers\NeviimChapterController;
 use App\Http\Controllers\NeviimVerseController;
+use App\Http\Controllers\KetuvimController;
 use App\Http\Controllers\KetuvimChapterController;
 use App\Http\Controllers\KetuvimVerseController;
 
@@ -42,15 +43,14 @@ Route::group(['prefix' => '/web'], function () {
 
         Route::group(['prefix' => '/neviim'], function () {
             Route::get('/books', [NeviimController::class, 'managerBooks']);
-            Route::get('/books/chapters', [NeviimChapterController::class, 'managerChapters']);
-            Route::get('/books/chapters/verses', [NeviimVerseController::class, 'managerVerses']);
-
+            Route::get('/books/{id}/chapters', [NeviimChapterController::class, 'managerChapters']);
+            Route::get('/books/{id}/chapters/{chapterId}/verses', [NeviimVerseController::class, 'managerVerses']);
         });
 
         Route::group(['prefix' => '/ketuvim'], function () {
             Route::get('/books', [KetuvimController::class, 'managerBooks']);
-            Route::get('/books/chapters', [KetuvimChapterController::class, 'managerChapters']);
-            Route::get('/books/chapters/verses', [KetuvimVerseController::class, 'managerVerses']);
+            Route::get('/books/{id}/chapters', [KetuvimChapterController::class, 'managerChapters']);
+            Route::get('/books/{id}/chapters/{chapterId}/verses', [KetuvimVerseController::class, 'managerVerses']);
         });
     });
 });

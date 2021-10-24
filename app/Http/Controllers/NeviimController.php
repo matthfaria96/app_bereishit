@@ -37,7 +37,13 @@ class NeviimController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = ['name_pt' =>  $request->name_pt, 'name_he' => $request->name_he];
+
+        $neviim = new $this->neviim;
+        $neviim->fill($data);
+        $data = $neviim->save();
+
+        return response()->json($data, 201);
     }
 
     /**
@@ -72,5 +78,10 @@ class NeviimController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function managerBooks()
+    {
+        return view('divisions.content.neviim.content.books.show');
     }
 }

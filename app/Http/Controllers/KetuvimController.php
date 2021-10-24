@@ -37,7 +37,13 @@ class KetuvimController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = ['name_pt' =>  $request->name_pt, 'name_he' => $request->name_he];
+
+        $ketuvim = new $this->ketuvim;
+        $ketuvim->fill($data);
+        $data = $ketuvim->save();
+
+        return response()->json($data, 201);
     }
 
     /**
@@ -72,5 +78,10 @@ class KetuvimController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function managerBooks()
+    {
+        return view('divisions.content.ketuvim.content.books.show');
     }
 }

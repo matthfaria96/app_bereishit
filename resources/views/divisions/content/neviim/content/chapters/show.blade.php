@@ -30,12 +30,12 @@
               </div>
               <div class="modal-body">
                   <div class="form-floating mb-3">
-                      <input type="number" class="form-control" id="floatingInput" placeholder=">Número do capítulo em português">
-                      <label for="floatingInput">Número do capítulo em português</label>
+                      <input type="number" class="form-control" id="inputNumberPt" placeholder=">Número do capítulo em português">
+                      <label for="inputNumberPt">Número do capítulo em português</label>
                     </div>
                     <div class="form-floating">
-                      <input type="text" class="form-control" id="floatingPassword" placeholder=">Número do capítulo em Hebreu">
-                      <label for="floatingPassword">Número do capítulo em Hebreu</label>
+                      <input type="text" class="form-control" id="inputNumberHe" placeholder=">Número do capítulo em Hebreu">
+                      <label for="inputNumberHe">Número do capítulo em Hebreu</label>
                     </div>
               </div>
               <div class="modal-footer">

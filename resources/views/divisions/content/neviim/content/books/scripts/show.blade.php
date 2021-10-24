@@ -12,17 +12,19 @@ $(document).ready(function() {
     }
 
     function save() {
-        appAjax('post', '/api/torah', getInputModalValues())        
+        appAjax('post', '/api/neviim', getInputModalValues(), function () {
+            populateTable();
+        })        
     }
     
     function populateTable() {
-        appAjax('get', '/api/torah', {}, function (data) {
+        appAjax('get', '/api/neviim', {}, function (data) {
             let books = data.data.map(function (item) {
                 return `
                     <tr>
                         <th scope="row">${item.id}</th>
                         <td  colspan="0">
-                            <a href="/web/manager/chapters" class="mr-5">${item.name_pt} | ${item.name_he}</a>
+                            <a href="/web/manager/neviim/books/${item.id}/chapters" class="mr-5">${item.name_pt} | ${item.name_he}</a>
                         </td>
                         <td  colspan="1">
                             <i class="fas fa-cog pointer"  data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${item.id}"></i>
@@ -31,6 +33,7 @@ $(document).ready(function() {
                 `
             })
 
+            $('table tbody tr').remove();
             tableBodyBooks.append(books)
 
         })
