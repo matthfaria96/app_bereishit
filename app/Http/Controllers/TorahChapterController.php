@@ -38,7 +38,13 @@ class TorahChapterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = ['number_pt' => $request['number_pt'], 'number_he' => $request['number_he'], 'book_id' => $request['book_id']];
+
+        $chapter = new $this->torahChapter;
+        $chapter->fill($data);
+        $chapter->save();
+
+        return response()->json($chapter, 200);
     }
 
     /**
@@ -73,5 +79,11 @@ class TorahChapterController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function managerChapters($id)
+    {
+
+        return view('divisions.content.torah.content.chapters.show', ['book_id' => $id]);
     }
 }

@@ -13,9 +13,9 @@
     <tbody>
       <tr>
         <th scope="row"></th>
-        <td  colspan="0"><a href="/web/manager/books">TORAH | Hebreu</a></td>
-        <td  colspan="1"><a href="/web/manager/books">NEVIIM | Hebreu</a></td>
-        <td  colspan="2"><a href="/web/manager/books">KETUVIM | Hebreu</a></td>
+        <td  colspan="0"><a href="/web/manager/torah/books">TORAH | Hebreu</a></td>
+        <td  colspan="1"><a href="/web/manager/neviim/books">NEVIIM | Hebreu</a></td>
+        <td  colspan="2"><a href="/web/manager/ketuvim/books">KETUVIM | Hebreu</a></td>
       </tr>
     </tbody>
     <tfoot>
@@ -53,5 +53,5 @@
 
 
 @section('scripts')
-    @include('managers.books.scripts.show')
+    @include('divisions.content.torah.content.books.scripts.show')
 @endsection

@@ -80,4 +80,9 @@ class TorahController extends Controller
     {
         //
     }
+
+    public function managerBooks()
+    {
+        return view('divisions.content.torah.content.books.show');
+    }
 }

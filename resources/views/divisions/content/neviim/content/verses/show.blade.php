@@ -72,5 +72,5 @@
 
 
 @section('scripts')
-    @include('managers.books.scripts.show')
+    @include('divisions.content.neviim.content.verses.scripts.show')
 @endsection

@@ -17,17 +17,12 @@ class DashboardController extends Controller
     }
 
     public function managerDivisions() {
-        return view('managers.divisions.show');
+        return view('divisions.show');
     }
 
     public function managerBooks()
     {
         return view('managers.books.show');
-    }
-
-    public function managerChapters()
-    {
-        return view('managers.chapters.show');
     }
 
     public function managerVerses()

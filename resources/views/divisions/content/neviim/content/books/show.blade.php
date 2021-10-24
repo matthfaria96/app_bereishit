@@ -49,5 +49,5 @@
 
 
 @section('scripts')
-    @include('managers.books.scripts.show')
+    @include('divisions.content.neviim.content.books.scripts.show')
 @endsection

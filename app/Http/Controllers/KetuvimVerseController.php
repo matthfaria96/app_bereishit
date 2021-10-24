@@ -37,7 +37,11 @@ class KetuvimVerseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $verse = new $this->ketuvimVerse;
+        $verse->fill($request);
+        $verse->save();
+
+        return response()->json($verse, 200);
     }
 
     /**

@@ -37,7 +37,11 @@ class NeviimVerseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $verse = new $this->neviimVerse;
+        $verse->fill($request);
+        $verse->save();
+
+        return response()->json($verse, 200);
     }
 
     /**

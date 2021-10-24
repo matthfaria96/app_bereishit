@@ -3,6 +3,16 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TorahController;
+use App\Http\Controllers\NeviimController;
+use App\Http\Controllers\TorahChapterController;
+use App\Http\Controllers\TorahVerseController;
+use App\Http\Controllers\NeviimChapterController;
+use App\Http\Controllers\NeviimVerseController;
+use App\Http\Controllers\KetuvimChapterController;
+use App\Http\Controllers\KetuvimVerseController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,8 +33,24 @@ Route::group(['prefix' => '/web'], function () {
 
     Route::group(['prefix' => '/manager'], function () {
         Route::get('/divisions', [DashboardController::class, 'managerDivisions']);
-        Route::get('/books', [DashboardController::class, 'managerBooks']);
-        Route::get('/chapters', [DashboardController::class, 'managerChapters']);
-        Route::get('/verses', [DashboardController::class, 'managerVerses']);
+
+        Route::group(['prefix' => '/torah'], function () {
+            Route::get('/books', [TorahController::class, 'managerBooks']);
+            Route::get('/books/{id}/chapters', [TorahChapterController::class, 'managerChapters']);
+            Route::get('/books/{id}/chapters/{chapterId}/verses', [TorahVerseController::class, 'managerVerses']);
+        });
+
+        Route::group(['prefix' => '/neviim'], function () {
+            Route::get('/books', [NeviimController::class, 'managerBooks']);
+            Route::get('/books/chapters', [NeviimChapterController::class, 'managerChapters']);
+            Route::get('/books/chapters/verses', [NeviimVerseController::class, 'managerVerses']);
+
+        });
+
+        Route::group(['prefix' => '/ketuvim'], function () {
+            Route::get('/books', [KetuvimController::class, 'managerBooks']);
+            Route::get('/books/chapters', [KetuvimChapterController::class, 'managerChapters']);
+            Route::get('/books/chapters/verses', [KetuvimVerseController::class, 'managerVerses']);
+        });
     });
 });

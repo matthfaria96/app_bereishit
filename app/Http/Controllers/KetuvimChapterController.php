@@ -37,7 +37,11 @@ class KetuvimChapterChapterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $chapter = new $this->ketuvimChapter;
+        $chapter->fill($request);
+        $chapter->save();
+
+        return response()->json($chapter, 200);
     }
 
     /**

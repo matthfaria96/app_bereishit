@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TorahController;
 use App\Http\Controllers\KetuvimController;
 use App\Http\Controllers\NeviimController;
+use App\Http\Controllers\TorahChapterController;
+use App\Http\Controllers\TorahVerseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,20 +21,21 @@ use App\Http\Controllers\NeviimController;
 */
 
 Route::group(['prefix' => '/torah'], function () {
-    Route::group(['prefix' => '/chapters'], function () {
-        Route::group(['prefix' => '/verses'], function () {
-            Route::get('/', [TorahController::class, 'index']);
-            Route::get('/{id}', [TorahController::class, 'show']);
-            Route::post('/', [TorahController::class, 'store']);
-            Route::put('/{id}', [TorahController::class, 'update']);
-            Route::delete('/{id}', [TorahController::class, 'destroy']);    
-        });
+    Route::group(['prefix' => '/{bookId}'], function () {
+        Route::get('/chapters/${chapterId}/verses', [TorahVerseController::class, 'index']);
+        Route::get('/chapters/${chapterId}/verses/{id}', [TorahVerseController::class, 'show']);
+        Route::post('/chapters/${chapterId}/verses', [TorahVerseController::class, 'store']);
+        Route::put('/chapters/${chapterId}/verses/{id}', [TorahVerseController::class, 'update']);
+        Route::delete('/chapters/${chapterId}/verses/{id}', [TorahVerseController::class, 'destroy']);    
+    });
 
-        Route::get('/', [TorahController::class, 'index']);
-        Route::get('/{id}', [TorahController::class, 'show']);
-        Route::post('/', [TorahController::class, 'store']);
-        Route::put('/{id}', [TorahController::class, 'update']);
-        Route::delete('/{id}', [TorahController::class, 'destroy']);
+
+    Route::group(['prefix' => '/chapters'], function () {
+        Route::get('/', [TorahChapterController::class, 'index']);
+        Route::get('/{id}', [TorahChapterController::class, 'show']);
+        Route::post('/', [TorahChapterController::class, 'store']);
+        Route::put('/{id}', [TorahChapterController::class, 'update']);
+        Route::delete('/{id}', [TorahChapterController::class, 'destroy']);
 
     });
 

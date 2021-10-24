@@ -37,7 +37,11 @@ class NeviimChapterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $chapter = new $this->neviimChapter;
+        $chapter->fill($request);
+        $chapter->save();
+
+        return response()->json($chapter, 200);
     }
 
     /**

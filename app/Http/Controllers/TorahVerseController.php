@@ -38,7 +38,11 @@ class TorahVerseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $verse = new $this->torahVerse;
+        $verse->fill($request);
+        $verse->save();
+
+        return response()->json($verse, 200);
     }
 
     /**
@@ -73,5 +77,10 @@ class TorahVerseController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function managerVerses ($id, $chapterId)
+    {
+        return view('divisions.content.torah.content.verses.show', ['book_id' => $id, 'chapter_id' => $chapterId]);
     }
 }

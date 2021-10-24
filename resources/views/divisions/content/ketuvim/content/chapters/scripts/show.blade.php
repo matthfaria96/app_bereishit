@@ -12,11 +12,11 @@
         }
     
         function save() {
-            appAjax('post', 'http://127.0.0.1:8000/api/torah', getInputModalValues())        
+            appAjax('post', '/api/torah', getInputModalValues())        
         }
         
         function populateTable() {
-            appAjax('get', 'http://127.0.0.1:8000/api/torah', {}, function (data) {
+            appAjax('get', '/api/torah', {}, function (data) {
                 let books = data.data.map(function (item) {
                     return `
                         <tr>
