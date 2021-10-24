@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TorahController;
@@ -12,7 +14,6 @@ use App\Http\Controllers\NeviimVerseController;
 use App\Http\Controllers\KetuvimController;
 use App\Http\Controllers\KetuvimChapterController;
 use App\Http\Controllers\KetuvimVerseController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +27,18 @@ use App\Http\Controllers\KetuvimVerseController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
 
-Route::group(['prefix' => '/web'], function () {
+
+
+
+Route::group(['prefix' => '/web', 'middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
     Route::group(['prefix' => '/manager'], function () {
@@ -54,3 +63,5 @@ Route::group(['prefix' => '/web'], function () {
         });
     });
 });
+
+require __DIR__.'/auth.php';
