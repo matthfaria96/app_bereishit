@@ -20534,21 +20534,27 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      form: this.$inertia.form({
+      result: '',
+      form: {
         email: '',
         password: '',
         remember: false
-      })
+      },
+      processing: false
     };
   },
   methods: {
     submit: function submit() {
       var _this = this;
 
-      this.form.post(this.route('login'), {
-        onFinish: function onFinish() {
-          return _this.form.reset('password');
+      this.processing = true;
+      window.axios.post(this.route('login'), this.form).then(function (response) {
+        if (response.data.status === 'success') {
+          window.location = '/web/dashboard';
         }
+      })["catch"](function (response) {
+        _this.processing = false;
+        _this.result = 'Falha ao realizar login, dados de acesso incorretos.';
       });
     }
   }
@@ -21595,7 +21601,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "Entrar"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeValidationErrors, {
     "class": "mb-4"
-  }), $props.status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.status), 1
+  }), $data.result ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.result), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
@@ -21634,9 +21640,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeButton, {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["ml-4", {
-      'opacity-25': $data.form.processing
+      'opacity-25': $data.processing
     }]),
-    disabled: $data.form.processing
+    disabled: $data.processing
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_4];

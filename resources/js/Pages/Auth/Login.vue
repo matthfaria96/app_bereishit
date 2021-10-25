@@ -3,8 +3,8 @@
 
     <BreezeValidationErrors class="mb-4" />
 
-    <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-        {{ status }}
+    <div v-if="result" class="mb-4 font-medium text-sm text-green-600">
+        {{ result }}
     </div>
 
     <form @submit.prevent="submit">
@@ -20,7 +20,7 @@
 
         <div class="flex items-center justify-end mt-4">
 
-            <BreezeButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <BreezeButton class="ml-4" :class="{ 'opacity-25': processing }" :disabled="processing">
                 Entrar
             </BreezeButton>
         </div>
@@ -56,19 +56,28 @@ export default {
 
     data() {
         return {
-            form: this.$inertia.form({
+            result: '',
+            form: {
                 email: '',
                 password: '',
                 remember: false
-            })
+            },
+            processing: false
         }
     },
 
     methods: {
         submit() {
-            this.form.post(this.route('login'), {
-                onFinish: () => this.form.reset('password'),
+            this.processing = true;
+            window.axios.post(this.route('login'), this.form).then(response => {
+                if(response.data.status === 'success') {
+                    window.location = '/web/dashboard'
+                }
+            }).catch((response) => {
+                this.processing = false;
+                this.result = 'Falha ao realizar login, dados de acesso incorretos.'
             })
+
         }
     }
 }

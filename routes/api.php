@@ -24,7 +24,7 @@ use App\Http\Controllers\NeviimChapterController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::group(['middleware' => ['auth:api']], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => '/torah'], function () {
         Route::group(['prefix' => '/{bookId}'], function () {
             Route::get('/chapters/{chapterId}/verses', [TorahVerseController::class, 'index']);

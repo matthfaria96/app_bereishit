@@ -37,10 +37,7 @@ function appAjax(_method, _url, _data, _callbackSuccess, _callbackError){
 
     $.ajaxSetup({
         headers: {
-            'Cookie':  `XSRF-TOKEN=${getCookie('laravel_session')}`,
-            'X-XSRF-TOKEN': getCookie('XSRF-TOKEN'),
-            'X-Requested-With': 'XMLHttpRequest',
-            'token': $('[name=_token]').val()
+            'Cookie': `${getCookie('XSRF-TOKEN')}; laravel_session=${getCookie('laravel_session')}`,
         }
     });
 
