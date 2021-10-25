@@ -12,7 +12,10 @@ $(document).ready(function() {
     }
 
     function save() {
-        appAjax('post', '/api/ketuvim', getInputModalValues(), function () {
+        appAjax('post', '/web/ketuvim', getInputModalValues(), function () {
+            inputNamePt.val('');
+            inputNameHe.val('');
+
             populateTable();
         })        
     }

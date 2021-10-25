@@ -14,7 +14,10 @@
         }
     
         function save() {
-            appAjax('post', `/api/torah/${bookId}/chapters`, getInputModalValues(), function () {
+            appAjax('post', `/web/torah/${bookId}/chapters`, getInputModalValues(), function () {
+                inputNumberPt.val('');
+                inputNumberHe.val('');
+
                 populateTable();
             })
         }

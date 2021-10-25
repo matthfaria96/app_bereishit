@@ -14,7 +14,10 @@
         }
     
         function save() {
-            appAjax('post', `/api/ketuvim/${bookId}/chapters`, getInputModalValues(), function () {
+            appAjax('post', `/web/ketuvim/${bookId}/chapters`, getInputModalValues(), function () {
+                inputNumberPt.val('');
+                inputNumberHe.val('');
+
                 populateTable();
             })
         }

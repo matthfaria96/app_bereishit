@@ -12,7 +12,9 @@ $(document).ready(function() {
     }
 
     function save() {
-        appAjax('post', '/api/torah', getInputModalValues(), function () {
+        appAjax('post', '/web/torah', getInputModalValues(), function () {
+            inputNamePt.val('');
+            inputNameHe.val('');
             populateTable();
         })        
     }

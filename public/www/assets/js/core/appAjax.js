@@ -30,6 +30,7 @@ function appAjax(_method, _url, _data, _callbackSuccess, _callbackError){
         return false;
     }
     var _dataProcess = {
+        '_token': $('[name=_token]').val(),
     };
 
     _dataProcess = $.extend(_data, _dataProcess);

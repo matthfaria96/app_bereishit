@@ -20,7 +20,12 @@
         }
     
         function save() {
-            appAjax('post', `/api/ketuvim/${bookId}/chapters/${chapterId}/verses`, getInputModalValues(), function () {
+            appAjax('post', `/web/ketuvim/${bookId}/chapters/${chapterId}/verses`, getInputModalValues(), function () {
+                inputNumberPt.val('');
+                inputNumberHe.val('');
+                inputVersePt.val('');
+                inputVerseHe.val('');
+
                 populateTable();
             })        
         }

@@ -12,15 +12,20 @@
             return {
                 number_pt: inputNumberPt.val(),
                 number_he: inputNumberHe.val(),
-                verse_pt: inputVersePt.val(),
-                verse_he: inputVerseHe.val(),
+                verse_pt:  inputVersePt.val(),
+                verse_he:  inputVerseHe.val(),
                 book_id: bookId,
                 chapter_id: chapterId,
             }
         }
     
         function save() {
-            appAjax('post', `/api/torah/${bookId}/chapters/${chapterId}/verses`, getInputModalValues(), function () {
+            appAjax('post', `/web/torah/${bookId}/chapters/${chapterId}/verses`, getInputModalValues(), function () {
+                inputNumberPt.val('');
+                inputNumberHe.val('');
+                inputVersePt.val('');
+                inputVerseHe.val('');
+
                 populateTable();
             })        
         }

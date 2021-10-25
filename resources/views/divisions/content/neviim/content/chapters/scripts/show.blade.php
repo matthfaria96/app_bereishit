@@ -14,7 +14,10 @@
         }
     
         function save() {
-            appAjax('post', `/api/neviim/${bookId}/chapters`, getInputModalValues(), function () {
+            appAjax('post', `/web/neviim/${bookId}/chapters`, getInputModalValues(), function () {
+                inputNumberPt.val('');
+                inputNumberHe.val('');
+
                 populateTable();
             })
         }

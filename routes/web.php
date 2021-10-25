@@ -59,6 +59,63 @@ Route::group(['prefix' => '/web', 'middleware' => ['auth', 'verified']], functio
             Route::get('/books/{id}/chapters/{chapterId}/verses', [KetuvimVerseController::class, 'managerVerses']);
         });
     });
+
+    Route::group(['prefix' => '/torah'], function () {
+        Route::group(['prefix' => '/{bookId}'], function () {
+            Route::post('/chapters/{chapterId}/verses', [TorahVerseController::class, 'store']);
+            Route::put('/chapters/{chapterId}/verses/{id}', [TorahVerseController::class, 'update']);
+            Route::delete('/chapters/{chapterId}/verses/{id}', [TorahVerseController::class, 'destroy']);    
+        });
+    
+        Route::group(['prefix' => '/{bookId}'], function () {
+            Route::post('/chapters/', [TorahChapterController::class, 'store']);
+            Route::put('/chapters/{id}', [TorahChapterController::class, 'update']);
+            Route::delete('/chapters/{id}', [TorahChapterController::class, 'destroy']);
+    
+        });
+    
+        Route::post('/', [TorahController::class, 'store']);
+        Route::put('/{id}', [TorahController::class, 'update']);
+        Route::delete('/{id}', [TorahController::class, 'destroy']);
+    });
+    
+    Route::group(['prefix' => '/neviim'], function () {
+        Route::group(['prefix' => '/{bookId}'], function () {
+            Route::post('/chapters/{chapterId}/verses', [NeviimVerseController::class, 'store']);
+            Route::put('/chapters/{chapterId}/verses/{id}', [NeviimVerseController::class, 'update']);
+            Route::delete('/chapters/{chapterId}/verses/{id}', [NeviimVerseController::class, 'destroy']);    
+        });
+    
+        Route::group(['prefix' => '/{bookId}'], function () {
+            Route::post('/chapters/', [NeviimChapterController::class, 'store']);
+            Route::put('/chapters/{id}', [NeviimChapterController::class, 'update']);
+            Route::delete('/chapters/{id}', [NeviimChapterController::class, 'destroy']);
+    
+        });
+    
+        Route::post('/', [NeviimController::class, 'store']);
+        Route::put('/{id}', [NeviimController::class, 'update']);
+        Route::delete('/{id}', [NeviimController::class, 'destroy']);
+    });
+    
+    Route::group(['prefix' => '/ketuvim'], function () {
+        Route::group(['prefix' => '/{bookId}'], function () {
+            Route::post('/chapters/{chapterId}/verses', [KetuvimVerseController::class, 'store']);
+            Route::put('/chapters/{chapterId}/verses/{id}', [KetuvimVerseController::class, 'update']);
+            Route::delete('/chapters/{chapterId}/verses/{id}', [KetuvimVerseController::class, 'destroy']);    
+        });
+    
+        Route::group(['prefix' => '/{bookId}'], function () {
+            Route::post('/chapters/', [KetuvimChapterController::class, 'store']);
+            Route::put('/chapters/{id}', [KetuvimChapterController::class, 'update']);
+            Route::delete('/chapters/{id}', [KetuvimChapterController::class, 'destroy']);
+    
+        });
+    
+        Route::post('/', [KetuvimController::class, 'store']);
+        Route::put('/{id}', [KetuvimController::class, 'update']);
+        Route::delete('/{id}', [KetuvimController::class, 'destroy']);
+    }); 
 });
 
 require __DIR__.'/auth.php';

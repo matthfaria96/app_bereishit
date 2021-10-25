@@ -12,7 +12,9 @@ $(document).ready(function() {
     }
 
     function save() {
-        appAjax('post', '/api/neviim', getInputModalValues(), function () {
+        appAjax('post', '/web/neviim', getInputModalValues(), function () {
+            inputNamePt.val('');
+            inputNameHe.val('');
             populateTable();
         })        
     }
