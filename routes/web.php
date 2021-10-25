@@ -35,9 +35,6 @@ Route::get('/', function () {
     ]);
 });
 
-
-
-
 Route::group(['prefix' => '/web', 'middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 

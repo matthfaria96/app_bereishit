@@ -30,11 +30,19 @@ function appAjax(_method, _url, _data, _callbackSuccess, _callbackError){
         return false;
     }
     var _dataProcess = {
-        '_token': $('[name=_token]').val()
     };
 
     _dataProcess = $.extend(_data, _dataProcess);
     // console.log(_dataProcess);
+
+    $.ajaxSetup({
+        headers: {
+            'Cookie':  `XSRF-TOKEN=${getCookie('laravel_session')}`,
+            'X-XSRF-TOKEN': getCookie('XSRF-TOKEN'),
+            'X-Requested-With': 'XMLHttpRequest',
+            'token': $('[name=_token]').val()
+        }
+    });
 
     return $.ajax({
         method: _method,
@@ -44,12 +52,31 @@ function appAjax(_method, _url, _data, _callbackSuccess, _callbackError){
         // success: _callbackSuccess,
         // error: _callbackError
     }).done(_callbackSuccess).fail(function (error) {
+        if(error.statusText === 'Unauthorized') {
+            window.location = '/login'
+        }
 
         if (typeof _callbackError == 'function') {
             _callbackError(error);
         }
     });
 }
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
 
 //#get
 function appGet(_url, _data, _callbackSuccess, _callbackError){
