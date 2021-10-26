@@ -45,7 +45,7 @@
     <!-- ===== js ======-->
     <script type="text/javascript" src="{{ url('www/assets/js/bootstrap.min.js?v=') }}{{ 'noCacheVersion-' . date('Ymdh') }}"></script>
     <script type="text/javascript" src="{{ url('www/assets/js/fontawesome.js?v=') }}{{ 'noCacheVersion-' . date('Ymdh') }}"></script>
-    <script type="text/javascript" src="{{ url('www/assets/js/Core/appAjax.js?v=') }}{{ 'noCacheVersion-' . date('Ymdh') }}"></script>
+    <script type="text/javascript" src="{{ url('www/assets/js/core/appAjax.js?v=') }}{{ 'noCacheVersion-' . date('Ymdh') }}"></script>
 
     @yield('scripts')
 </body>
