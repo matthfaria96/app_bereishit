@@ -21,7 +21,7 @@ class TorahVerseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($chapterId)
+    public function index($bookId, $chapterId)
     {
         $model = $this->torahVerse::query();
 

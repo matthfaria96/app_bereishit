@@ -26,9 +26,9 @@ use App\Http\Controllers\NeviimChapterController;
 */
 Route::group(['middleware' => []], function () {
     Route::group(['prefix' => '/torah'], function () {
-        Route::group(['prefix' => '/{bookId}'], function () {
-            Route::get('/chapters/{chapterId}/verses', [TorahVerseController::class, 'index']);
-            Route::get('/chapters/{chapterId}/verses/{id}', [TorahVerseController::class, 'show']);
+        Route::group(['prefix' => '/'], function () {
+            Route::get('{bookId}/chapters/{chapterId}/verses', [TorahVerseController::class, 'index']);
+            Route::get('{bookId}/chapters/{chapterId}/verses/{id}', [TorahVerseController::class, 'show']);
         });
     
         Route::group(['prefix' => '/{bookId}'], function () {

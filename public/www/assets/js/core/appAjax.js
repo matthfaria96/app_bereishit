@@ -25,13 +25,11 @@ $.fn.serializeObject = function()
 
 function appAjax(_method, _url, _data, _callbackSuccess, _callbackError){
 
-    if($('[name=_token]').length == 0){
-        console.log('appAjax: Token CSRF não definido na página');
-        return false;
+    let _dataProcess = {};
+
+    if(_method !== 'get') {
+        _dataProcess._token = $('[name=_token]').val();
     }
-    var _dataProcess = {
-        '_token': $('[name=_token]').val(),
-    };
 
     _dataProcess = $.extend(_data, _dataProcess);
     // console.log(_dataProcess);
