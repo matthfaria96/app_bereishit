@@ -16,22 +16,23 @@
     <tfoot>
         <tr>
             <th scope="row"></th>
-            <td colspan="0"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Cadastrar vesículo</button></td>
+            <td colspan="0"><button type="button" class="btn btn-primary create-verse-buttom" data-bs-toggle="modal" data-bs-target="#modal-verse">Cadastrar vesículo</button></td>
         </tr>
     </tfoot>
   </table>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal-verse" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <form class="modal-content">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Informações de acordo com idiomas</h5>
+            <h5 class="modal-title" id="modalLabel">Informações de acordo com idiomas</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="form-floating">
+                  <input type="hidden" class="form-control" id="inputId">
                   <input type="text" class="form-control" id="inputNumberPt" placeholder=">Número pt">
                   <label for="inputNumberPt">Número pt</label>
                 </div>
@@ -50,6 +51,7 @@
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-danger btn-delete">Excluir</button>
             <button type="button" class="btn btn-primary btn-save">Salvar</button>
             </div>
         </form>

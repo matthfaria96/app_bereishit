@@ -65,16 +65,30 @@ class NeviimVerseController extends Controller
         //
     }
 
-    /**
+/**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $book, $chapter, $id)
     {
-        //
+        $data = [
+            'number_pt'  => $request['number_pt'],
+            'number_he'  => $request['number_he'],
+            'verse_pt'   => $request['verse_pt'],
+            'verse_he'   => $request['verse_he'],
+            'chapter_id' => $request['chapter_id']
+        ];
+
+        $verse = new $this->neviimVerse;
+        $verse = $verse->find($id);
+
+        $verse->fill($data);
+        $verse->save();
+
+        return response()->json($verse, 201);
     }
 
     /**
@@ -83,9 +97,12 @@ class NeviimVerseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($book, $chapter, $id)
     {
-        //
+        $verse = new $this->neviimVerse;
+        $verse = $verse->find($id);
+
+        return response()->json($verse->delete(), 201);
     }
 
     public function managerVerses($id, $chapterId)
