@@ -52,9 +52,6 @@
     
         function save() {
             appAjax('post', `/web/torah/${bookId}/chapters`, getInputModalValues(), function () {
-                inputNumberPt.val('');
-                inputNumberHe.val('');
-
                 resetForm();
                 $('.btn-save').attr('disabled', false)
 
