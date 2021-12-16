@@ -28,7 +28,9 @@ class NeviimVerseController extends Controller
             ->filter(function ($query) use($chapterId) {
                 $query->where('chapter_id', '=', $chapterId);
             })
-            ->orderColumns([], '-:column $1')
+            ->order(function($query) {
+                $query->orderBy('number_pt', 'asc');
+            })
             ->make();
     }
 
