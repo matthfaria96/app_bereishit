@@ -119,11 +119,8 @@
         }
         
         function populateTable() {
-            appAjax('post', `/api/torah/${bookId}/chapters/${chapterId}/verses`, datatable, function (data) {
+            appAjax('get', `/api/torah/${bookId}/chapters/${chapterId}/verses`, {}, function (data) {
                 verses = data;
-
-                
-                getPages(data);
 
                 let books = data.data.map(function (item, index) {
                     return `

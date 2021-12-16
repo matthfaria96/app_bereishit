@@ -1,13 +1,6 @@
 @extends('layouts.panel')
 
 @section('content')
-<nav class="navbar">
-  <div class="container-fluid">
-    <button type="button" class="navbar-brand btn btn-primary create-verse-buttom" data-bs-toggle="modal" data-bs-target="#modal-verse">Cadastrar vesículo</button>
-  </div>
-</nav>
-
-
 
 <table class="table">
     <thead>
@@ -21,10 +14,13 @@
     </thead>
     <tbody>
     </tbody>
-
+    <tfoot>
+        <tr>
+            <th scope="row"></th>
+            <td colspan="0"><button type="button" class="btn btn-primary create-verse-buttom" data-bs-toggle="modal" data-bs-target="#modal-verse">Cadastrar vesículo</button></td>
+        </tr>
+    </tfoot>
   </table>
-  <ul class="pagination">
-  </ul>
 
     <!-- Modal -->
     <div class="modal fade" id="modal-verse" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
