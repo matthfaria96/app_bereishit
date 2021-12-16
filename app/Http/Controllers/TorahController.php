@@ -67,7 +67,14 @@ class TorahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = ['name_pt' =>  $request->name_pt, 'name_he' => $request->name_he];
+
+        $torah = new $this->torah;
+        $torah = $torah->find($id);
+        $torah->fill($data);
+        $data = $torah->save();
+
+        return response()->json($data, 201);
     }
 
     /**
@@ -78,7 +85,10 @@ class TorahController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $torah = new $this->torah;
+        $torah = $torah->find($id);
+
+        return response()->json($torah->delete(), 201);
     }
 
     public function managerBooks()

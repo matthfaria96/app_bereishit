@@ -28,6 +28,7 @@ Route::group(['middleware' => []], function () {
     Route::group(['prefix' => '/torah'], function () {
         Route::group(['prefix' => '/{bookId}'], function () {
             Route::get('/chapters/{chapterId}/verses', [TorahVerseController::class, 'index']);
+            Route::post('/chapters/{chapterId}/verses', [TorahVerseController::class, 'index']);
             Route::get('/chapters/{chapterId}/verses/{id}', [TorahVerseController::class, 'show']);
         });
     

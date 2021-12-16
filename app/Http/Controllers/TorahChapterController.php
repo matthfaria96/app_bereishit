@@ -68,9 +68,16 @@ class TorahChapterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $bookId, $id)
     {
-        //
+        $data = ['number_pt' => $request['number_pt'], 'number_he' => $request['number_he'], 'book_id' => $request['book_id']];
+
+        $chapter = new $this->torahChapter;
+        $chapter = $chapter->find($id);
+        $chapter->fill($data);
+        $chapter->save();
+
+        return response()->json($chapter, 201);
     }
 
     /**
@@ -79,9 +86,13 @@ class TorahChapterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($bookId, $id)
     {
-        //
+        $chapter = new $this->torahChapter;
+        $chapter = $chapter->find($id);
+        $chapter->delete();
+
+        return response()->json($chapter, 201);
     }
 
     public function managerChapters($id)

@@ -66,7 +66,14 @@ class NeviimController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = ['name_pt' =>  $request->name_pt, 'name_he' => $request->name_he];
+
+        $neviim = new $this->neviim;
+        $neviim = $neviim->find($id);
+        $neviim->fill($data);
+        $data = $neviim->save();
+
+        return response()->json($data, 201);
     }
 
     /**
@@ -77,7 +84,10 @@ class NeviimController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $neviim = new $this->neviim;
+        $neviim = $neviim->find($id);
+
+        return response()->json($neviim->delete(), 201);
     }
 
     public function managerBooks()

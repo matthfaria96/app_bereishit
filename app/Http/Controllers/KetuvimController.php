@@ -66,9 +66,15 @@ class KetuvimController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $data = ['name_pt' =>  $request->name_pt, 'name_he' => $request->name_he];
 
+        $ketuvim = new $this->ketuvim;
+        $ketuvim = $ketuvim->find($id);
+        $ketuvim->fill($data);
+        $data = $ketuvim->save();
+
+        return response()->json($data, 201);
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -77,7 +83,10 @@ class KetuvimController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ketuvim = new $this->ketuvim;
+        $ketuvim = $ketuvim->find($id);
+
+        return response()->json($ketuvim->delete(), 201);
     }
 
     public function managerBooks()
