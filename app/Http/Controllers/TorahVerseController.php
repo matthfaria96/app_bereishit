@@ -26,10 +26,13 @@ class TorahVerseController extends Controller
         $model = $this->torahVerse::query();
 
         return DataTables::eloquent($model)
+                
             ->filter(function ($query) use($chapterId) {
                 $query->where('chapter_id', '=', $chapterId);
             })
-            ->orderColumns([], '-:column $1')
+            ->order(function($query) {
+                $query->orderBy('number_pt', 'asc');
+            })
             ->make();
     }
 
