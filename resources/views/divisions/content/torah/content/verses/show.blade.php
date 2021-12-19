@@ -9,7 +9,8 @@
         <th scope="co1">Número</th>
         <th scope="co2">Texto português</th>
         <th scope="co3">Texto hebreu</th>
-        <th scope="co4">Ações</th>
+        <th scope="co4">Comentários</th>      
+        <th scope="co5">Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -48,6 +49,10 @@
                 <div class="form-floating">
                   <input type="text" class="form-control" id="inputVerseHe" placeholder=">Texto hebreu">
                   <label for="inputVerseHe">Texto hebreu</label>
+                </div>
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="inputComments" placeholder=">Comentários">
+                  <label for="inputComments">Comentários</label>
                 </div>
             </div>
             <div class="modal-footer">

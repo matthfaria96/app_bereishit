@@ -9,5 +9,5 @@ class KetuvimVerse extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['number_pt', 'number_he', 'verse_pt', 'verse_he', 'chapter_id'];
+    protected $fillable = ['number_pt', 'number_he', 'comments', 'verse_pt', 'verse_he', 'chapter_id'];
 }

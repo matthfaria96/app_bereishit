@@ -9,7 +9,7 @@ class TorahVerse extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['number_pt', 'number_he', 'verse_pt', 'verse_he', 'chapter_id'];
+    protected $fillable = ['number_pt', 'number_he', 'verse_pt', 'comments', 'verse_he', 'chapter_id'];
 
 
     /**

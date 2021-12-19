@@ -14,6 +14,7 @@
         const inputNumberHe    = $('#inputNumberHe');
         const inputVersePt     = $('#inputVersePt');
         const inputVerseHe     = $('#inputVerseHe');
+        const inputComments     = $('#inputComments');
         const bookId           = "{{ $book_id }}";
         const chapterId        = "{{ $chapter_id }}";
         const tableBodyBooks   = $('table tbody');
@@ -24,6 +25,7 @@
                 number_he: inputNumberHe.val(),
                 verse_pt:  inputVersePt.val(),
                 verse_he:  inputVerseHe.val(),
+                comments:  inputComments.val(),
                 book_id: bookId,
                 chapter_id: chapterId,
             }
@@ -34,6 +36,7 @@
             inputNumberHe.val('');
             inputVersePt.val('');
             inputVerseHe.val('');
+            inputComments.val('');
         }
     
         function save() {
@@ -125,17 +128,20 @@
                 let books = data.data.map(function (item, index) {
                     return `
                         <tr>
-                            <th scope="row">${index + 1}</th>
-                            <td  colspan="0">
+                            <td scope="col">${index + 1}</th>
+                            <td  scope="col">
                                 <a href="#">${item.number_pt} | ${item.number_he}</a>
                             </td>
-                            <td  colspan="1">
+                            <td  scope="col">
                                 <a href="#">${item.verse_pt}</a>
                             </td>
-                            <td  colspan="2">
+                            <td  scope="col">
                                 <a href="#">${item.verse_he}</a>
                             </td>
-                            <td  colspan="3">
+                            <td  scope="col">
+                                <a href="#">${item.comments}</a>
+                            </td>
+                            <td  scope="col">
                                 <i class="fas fa-cog pointer modal-verse-open" data-bs-toggle="modal" data-row-index='${index}' data-row-id="${item.id}" data-bs-target="#modal-verse"></i>
                             </td>
                         </tr>
@@ -161,6 +167,7 @@
                     inputNumberHe.val(data.number_he)
                     inputVersePt.val(data.verse_pt)
                     inputVerseHe.val(data.verse_he)
+                    inputComments.val(data.comments)
 
                     e.preventDefault();
                 })
