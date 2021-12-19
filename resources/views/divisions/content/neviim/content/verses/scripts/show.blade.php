@@ -80,7 +80,7 @@
                                 <a href="#">${item.verse_he}</a>
                             </td>
                             <td  scope="col">
-                                <a href="#">${item.comments}</a>
+                                <a href="#">${item.comments ? item.comments : ''}</a>
                             </td>
                             <td  scope="col">
                                 <i class="fas fa-cog pointer modal-verse-open" data-bs-toggle="modal" data-row-index='${index}' data-row-id="${item.id}" data-bs-target="#modal-verse"></i>
