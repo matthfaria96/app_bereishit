@@ -14,7 +14,7 @@ class AlterTableTorahVersesComments extends Migration
     public function up()
     {
         Schema::table('torah_verses', function (Blueprint $table) {
-            $table->longText('comments');
+            $table->longText('comments')->nullable();
         });
     }
 

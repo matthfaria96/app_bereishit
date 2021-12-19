@@ -14,7 +14,7 @@ class AlterTableNeviimVersesComments extends Migration
     public function up()
     {
         Schema::table('neviim_verses', function (Blueprint $table) {
-            $table->longText('comments');
+            $table->longText('comments')->nullable();
         });
     }
 

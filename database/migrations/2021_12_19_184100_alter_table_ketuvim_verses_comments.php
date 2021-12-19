@@ -14,7 +14,7 @@ class AlterTableKetuvimVersesComments extends Migration
     public function up()
     {
         Schema::table('ketuvim_verses', function (Blueprint $table) {
-            $table->longText('comments');
+            $table->longText('comments')->nullable();
         });
     }
 
