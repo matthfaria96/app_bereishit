@@ -51,7 +51,7 @@
                   <label for="inputVerseHe">Texto hebreu</label>
                 </div>
                 <div class="form-floating">
-                  <input type="text" class="form-control" id="inputComments" placeholder=">Comentários">
+                  <textarea type="text" class="form-control" id="inputComments" placeholder=">Comentários" rows="8"></textarea>
                   <label for="inputComments">Comentários</label>
                 </div>
             </div>
