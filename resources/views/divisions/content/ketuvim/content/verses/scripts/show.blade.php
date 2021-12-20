@@ -62,6 +62,15 @@
             })        
         }
 
+        function unescapeHtml(escapedString) {
+            return escapedString
+                .replace(/&amp;/g, "&")
+                .replace(/&lt;/g, "<")
+                .replace(/&gt;/g, ">")
+                .replace(/&quot;/g, "\"")
+                .replace(/&#039;/g, "'");
+        }
+
         function populateTable() {
             appAjax('get', `/api/ketuvim/${bookId}/chapters/${chapterId}/verses`, {}, function (data) {
                 verses = data;
@@ -80,7 +89,7 @@
                                 <a href="#">${item.verse_he}</a>
                             </td>
                             <td  scope="col">
-                                <a href="#">${item.comments ? item.comments : ''}</a>
+                                <a href="#">${item.comments ? unescapeHtml(item.comments) : ''}</a>
                             </td>
                             <td  scope="col">
                                 <i class="fas fa-cog pointer modal-verse-open" data-bs-toggle="modal" data-row-index='${index}' data-row-id="${item.id}" data-bs-target="#modal-verse"></i>
@@ -108,7 +117,7 @@
                     inputNumberHe.val(data.number_he)
                     inputVersePt.val(data.verse_pt)
                     inputVerseHe.val(data.verse_he)
-                    inputComments.val(data.comments)
+                    inputComments.val(unescapeHtml(data.comments))
 
                     e.preventDefault();
                 })
