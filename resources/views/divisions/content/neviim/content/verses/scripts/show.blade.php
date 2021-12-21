@@ -83,7 +83,7 @@
                                 <a href="#">${item.number_pt} | ${item.number_he}</a>
                             </td>
                             <td  scope="col">
-                                <a href="#">${item.verse_pt}</a>
+                                <a href="#">${unescapeHtml(item.verse_pt)}</a>
                             </td>
                             <td  scope="col">
                                 <a href="#">${item.verse_he}</a>
@@ -115,7 +115,7 @@
                     $('#modal-verse .modal-content .modal-body .form-floating #inputId').val(data.id)
                     inputNumberPt.val(data.number_pt)
                     inputNumberHe.val(data.number_he)
-                    inputVersePt.val(data.verse_pt)
+                    inputVersePt.val(unescapeHtml(data.verse_pt))
                     inputVerseHe.val(data.verse_he)
                     inputComments.val(unescapeHtml(data.comments))
 
