@@ -46,6 +46,8 @@ class KetuvimChapterController extends Controller
         $chapter->fill($data);
         $chapter->save();
 
+        \DB::disconnect('mysql');
+
         return response()->json($chapter, 201);
     }
 
@@ -75,6 +77,8 @@ class KetuvimChapterController extends Controller
         $chapter = $chapter->find($id);
         $chapter->fill($data);
         $chapter->save();
+
+        \DB::disconnect('mysql');
 
         return response()->json($chapter, 201);
     }

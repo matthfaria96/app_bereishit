@@ -47,6 +47,8 @@ class TorahChapterController extends Controller
         $chapter->fill($data);
         $chapter->save();
 
+        \DB::disconnect('mysql');
+
         return response()->json($chapter, 201);
     }
 
@@ -76,6 +78,8 @@ class TorahChapterController extends Controller
         $chapter = $chapter->find($id);
         $chapter->fill($data);
         $chapter->save();
+
+        \DB::disconnect('mysql');
 
         return response()->json($chapter, 201);
     }
