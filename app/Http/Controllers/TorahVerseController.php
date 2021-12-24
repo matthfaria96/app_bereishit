@@ -56,6 +56,8 @@ class TorahVerseController extends Controller
         $verse->fill($data);
         $verse->save();
 
+        \DB::disconnect('mysql');
+
         return response()->json($verse, 201);
     }
 
@@ -93,6 +95,8 @@ class TorahVerseController extends Controller
 
         $verse->fill($data);
         $verse->save();
+
+        \DB::disconnect('mysql');
 
         return response()->json($verse, 201);
     }
