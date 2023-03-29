@@ -42,7 +42,7 @@ function appAjax(_method, _url, _data, _callbackSuccess, _callbackError){
 
     return $.ajax({
         method: _method,
-        url: 'http://127.0.0.1:8000' + _url,
+        url: _url,
         data: _dataProcess,
         // async: false,
         // success: _callbackSuccess,
